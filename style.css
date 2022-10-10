@@ -31,11 +31,13 @@ body{
   transform:
     rotateX(51deg)
     rotateZ(43deg);
-  transform-style: preserve-3d;
+  /* transform-style: preserve-3d; */
 }
 
 .platform {
   display: flex;
+  justify-self: center;
+  align-self: center;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
@@ -64,7 +66,7 @@ body{
   justify-content: center;
   align-items: center;
   transform: translate(-35%,-35%);
-  border-radius: 30px;
+  border-radius: 8px;
   z-index: 5;
   box-shadow: 1px 1px 0px var(--shadow),
   2px 2px 0px var(--shadow),
@@ -85,25 +87,25 @@ body{
 
 .sword{
   position: absolute;
-  width: 10px;
-  /* height: 250px; */
+  display: none;
+  width: 10px; 
   background-color: rgb(255, 255, 255);
-  z-index: 5;
+  z-index: 6;
   transform: scale(0);
-  /* transition: all 2s; */
-  /* animation: attack 2s infinite linear; */
   border-radius: 25px;
-  box-shadow: 0 0 20px var(--sword),
-  0 0 40px var(--sword), 
-  0 0 60px var(--sword), 
-  0 0 80px var(--sword), 
-  0 0 120px var(--sword),
-  0 0 220px var(--sword),
-  0 0 320px var(--sword);
 }
 .attack{
+  display: flex;
     animation: attack .7s infinite linear;
-}
+    box-shadow: 0 0 20px var(--sword),
+    0 0 40px var(--sword), 
+    0 0 60px var(--sword), 
+    0 0 80px var(--sword), 
+    0 0 120px var(--sword),
+    0 0 220px var(--sword),
+    0 0 320px var(--sword);
+  }
+
 @keyframes attack {
   0%{
 
@@ -122,11 +124,11 @@ body{
 
 @keyframes appear {
   0%{
-    transform: scale(0) translate(-25%,-25%);
+    transform: scale(0) translate(-35%,-35%);
     /* transform: translate(-25%,-25%); */
   }
   100%{
-    transform: scale(1) translate(-25%,-25%);
+    transform: scale(1) translate(-35%,-35%);
     /* transform: translate(-25%,-25%);
   } */
 }

@@ -67,7 +67,6 @@ function placePlayer() {
     Math.random() * document.querySelectorAll(".platform").length
   );
   let startPosition = document.querySelectorAll(".platform")[randomIndex];
-
   console.log(startPosition);
   createPlayer(startPosition);
 }
