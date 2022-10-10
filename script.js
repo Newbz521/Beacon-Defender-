@@ -59,7 +59,7 @@ function createPlayer(start) {
   let sword = document.createElement("div");
   sword.classList.add("sword")
   sword.setAttribute("id", "sword");
-  sword.style.height = start.getBoundingClientRect().width * 2 + "px";
+  sword.style.height = start.getBoundingClientRect().width * 2.1 + "px";
   player.appendChild(sword);
 }
 function placePlayer() {
@@ -116,4 +116,13 @@ function moveDown() {
       createPlayer(platforms[i + 6]);
     }
   }
+}
+
+function attack() {
+  let sword = document.querySelector(".sword");
+  sword.classList.add("attack")
+  function removeAttack() {
+    sword.classList.remove("attack")
+  }
+  setTimeout(removeAttack, 700)
 }
