@@ -289,6 +289,18 @@ p{
   margin: 0;
   margin-left: 10%;
   margin-right: 10%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* width: 100%; */
+}
+.pointLine{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 span{
   display: inline-block;
