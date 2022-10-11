@@ -24,11 +24,37 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+function trashTalk() {
+  let trashTalk = document.createElement("div")
+  trashTalk.classList.add("trashTalk")
+  trashTalk.style.width = 50 + "vh";
+  trashTalk.style.height = 10 + "vh";
+  trashTalk.style.position = "absolute";
+  trashTalk.style.border = "1px solid white";
+  trashTalk.style.left = 0;
+  trashTalk.style.top = 0;
+  trashTalk.style.margin = 25 + "px";
+  trashTalk.style.display = "flex";
+  trashTalk.style.justifyContent = "center";
+  trashTalk.style.alignItems = "center";
+  trashTalk.style.color = "white";
+  trashTalk.style.fontSize = 25 + "px";
+  trashTalk.style.borderRadius = 10 + "px";
+  gameScreen.appendChild(trashTalk)
+}
+trashTalk()
+
+let talk = "Can you pop my bubbles?"
+function setTrash() {
+  let trashBoard = document.querySelector(".trashTalk")
+  trashBoard.innerText = talk;
+}
+setTrash()
 function scoreBoard() {
   let scoreBoard = document.createElement("div")
   scoreBoard.classList.add("scoreBoard")
   scoreBoard.style.width = 20 + "vh";
-  scoreBoard.style.height = 20 + "vh";
+  scoreBoard.style.height = 10 + "vh";
   scoreBoard.style.position = "absolute";
   scoreBoard.style.border = "1px solid white";
   scoreBoard.style.right = 0;
@@ -43,6 +69,8 @@ function scoreBoard() {
   gameScreen.appendChild(scoreBoard)
 }
 scoreBoard()
+
+
 let currentScore = 0;
 function setScore() {
   let scoreBoard = document.querySelector(".scoreBoard")
@@ -199,20 +227,37 @@ function attack() {
       }
     }
   }
-  if (removed.length == 2) {
+    if (removed.length == 1) {
+    console.log("only one bubble?");
+      currentScore += 1
+      talk = "Just one bubble?!?"
+      setTrash();
+      setScore()
+      removed = [];
+  }
+    else if (removed.length == 2) {
     // console.log("1POINT!!")
-    currentScore += 1
-    setScore()
+    console.log("popped two bubble!")
+      currentScore += 5
+      talk = "Two bubbles is alright.."
+      setTrash();
+      setScore()
+      removed = [];
   } else if (removed.length == 3) {
     console.log("THREE BUBBLE COMBO +3POINTS!")
-    currentScore += 5
-    setScore
+      currentScore += 10
+      talk = "Fine, i under-estimated you"
+      setTrash();
+      setScore()
+      removed = [];
   } else if (removed.length > 3) {
-    currentScore += 100
     console.log("BIG COMBO! + 5 points")
-    setScore
-  }
-
+      currentScore += 100
+      talk = "WOW, you are a champ after all"
+      setTrash();
+      setScore()
+      removed = [];
+  } 
 }
 
 function createBomb() {
@@ -233,7 +278,7 @@ function createBomb() {
       bomb.remove()
     }
     setTimeout( shrink, 3000);
-    setTimeout(remove,4000)
+    setTimeout(remove,3800)
     }
   removeBomb()
 }
