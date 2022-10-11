@@ -24,6 +24,7 @@ body{
   align-items: center;
   background-color: purple;
   font-family: 'Silkscreen', cursive;
+  overflow: hidden;
 
   /* border: 1px solid blue; */
 }
@@ -34,7 +35,6 @@ body{
   translate(0%,0%)
     rotateX(50deg)
     rotateZ(45deg);
-  /* transform-style: preserve-3d; */
 }
 
 .platform {
