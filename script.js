@@ -23,8 +23,6 @@ document.addEventListener("keydown", (event) => {
     attack();
   }
 });
-
-
 function createMap() {
   let map = document.createElement("div");
   map.classList.add("mapContainer");
@@ -46,7 +44,6 @@ function createMap() {
   }
 }
 createMap();
-let mapSelect = document.querySelector(".mapContainer")
 
 function createPlayer(start) {
   let player = document.createElement("div");
@@ -55,27 +52,23 @@ function createPlayer(start) {
   player.style.width = 5 + "vh";
   player.style.position = "absolute";
   player.style.background = "red";
-  // player.style.left = start.getBoundingClientRect().left;
-  // player.style.top = start.getBoundingClientRect().top;
-  // player.innerText = start.innerText;
-  mapSelect.appendChild(player);
-  // let sword = document.createElement("div");
-  // sword.classList.add("sword")
-  // sword.setAttribute("id", "sword");
-  // sword.style.height = start.getBoundingClientRect().width * 2.1 + "px";
-  // player.appendChild(sword);
+  player.style.left = start.getBoundingClientRect().left;
+  player.style.top = start.getBoundingClientRect().top;
+  player.innerText = start.innerText;
+  start.appendChild(player);
+  let sword = document.createElement("div");
+  sword.classList.add("sword")
+  sword.setAttribute("id", "sword");
+  sword.style.height = start.getBoundingClientRect().width * 2.1 + "px";
+  player.appendChild(sword);
 }
-
 function placePlayer() {
-  createPlayer();
-  let player = document.querySelector("#player")
   let randomIndex = Math.floor(
     Math.random() * document.querySelectorAll(".platform").length
   );
-
-  let startPosition = document.querySelectorAll(".platform")[randomIndex].getBoundingClientRect();
-  player.style.left = startPosition.left + "px";
-  player.style.right = startPosition.top + "px";
+  let startPosition = document.querySelectorAll(".platform")[randomIndex];
+  console.log(startPosition);
+  createPlayer(startPosition);
 }
 
 placePlayer();
@@ -86,7 +79,7 @@ function moveLeft() {
   for (let i = 0; i < platforms.length; i++) {
     if (platforms[i] === currentPosition.parentElement && i > 0) {
       platforms[i].removeChild(currentPosition);
-      createPlayer();
+      createPlayer(platforms[i - 1]);
     }
   }
 }
@@ -97,7 +90,7 @@ function moveRight() {
   for (let i = 0; i < platforms.length; i++) {
     if (platforms[i] === currentPosition.parentElement && (i < platforms.length - 1)) {
       platforms[i].removeChild(currentPosition);
-      createPlayer();
+      createPlayer(platforms[i + 1]);
     }
   }
 }
@@ -108,7 +101,7 @@ function moveUp() {
   for (let i = 0; i < platforms.length; i++) {
     if (platforms[i] === currentPosition.parentElement && (i > 6)) {
       platforms[i].removeChild(currentPosition);
-      createPlayer();
+      createPlayer(platforms[i - 6]);
     }
   }
 }
@@ -119,7 +112,7 @@ function moveDown() {
   for (let i = 0; i < platforms.length; i++) {
     if (platforms[i] === currentPosition.parentElement && (i < 30)) {
       platforms[i].removeChild(currentPosition);
-      createPlayer();
+      createPlayer(platforms[i + 6]);
     }
   }
 }
