@@ -22,7 +22,7 @@ body{
   position: absolute;
   justify-content: center;
   align-items: center;
-  background-color: rgb(87, 2, 87);
+  background: radial-gradient( rgb(145, 39, 231), black);
   font-family: 'Silkscreen', cursive;
   overflow: hidden;
 }
