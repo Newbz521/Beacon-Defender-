@@ -3,8 +3,8 @@
 }
 
 :root {
-  --shadow: #1e90ff;
-  --surface: #f3fcff;
+  --shadow: rgb(147, 237, 255);
+  --surface: #888888;
   --sword: rgb(255, 157, 157);
 }
 
@@ -22,15 +22,18 @@ body{
   position: absolute;
   justify-content: center;
   align-items: center;
-  
+  background-color: purple;
+  font-family: 'Silkscreen', cursive;
+
   /* border: 1px solid blue; */
 }
 .mapContainer{
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6,1fr);
   transform:
-    rotateX(51deg)
-    rotateZ(43deg);
+  translate(0%,0%)
+    rotateX(50deg)
+    rotateZ(45deg);
   /* transform-style: preserve-3d; */
 }
 
@@ -41,11 +44,19 @@ body{
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  color: white;
+  font-size: 30px;
   border: 1px solid rgb(128, 128, 128, .6);
-  background-color: var(--surface);
-  width: 90%;
-  height: 90%;
-  box-shadow: 1px 1px 0px var(--shadow),
+  background-image: linear-gradient(
+    to bottom right,
+    #51beed,
+    #a4def7,
+    #c88eda,
+    #c951ed
+  );
+  width: 80%;
+  height: 80%;
+  box-shadow:   1px 1px 0px var(--shadow),
                 2px 2px 0px var(--shadow),
                 3px 3px 0px var(--shadow),
                 4px 4px 0px var(--shadow),
@@ -59,6 +70,8 @@ body{
                 12px 12px 0px var(--shadow),
                 13px 13px 0px var(--shadow),
                 14px 14px 0px var(--shadow);
+
+ 
 }
 
 #player{ 
@@ -68,6 +81,7 @@ body{
   transform: translate(-35%,-35%);
   border-radius: 8px;
   z-index: 5;
+  font-size: 25px;
   box-shadow: 1px 1px 0px var(--shadow),
   2px 2px 0px var(--shadow),
   3px 3px 0px var(--shadow),
@@ -91,12 +105,38 @@ body{
   width: 10px; 
   background-color: rgb(255, 255, 255);
   z-index: 6;
-  transform: scale(0);
+  /* transform: scale(1); */
   border-radius: 25px;
+  box-shadow: 0 0 20px var(--sword),
+  0 0 40px var(--sword), 
+  0 0 60px var(--sword), 
+  0 0 80px var(--sword), 
+  0 0 120px var(--sword),
+  0 0 220px var(--sword),
+  0 0 320px var(--sword);
+  transition: all 1s
 }
+.sword2{
+  position: absolute;
+  display: none;
+  height: 10px; 
+  background-color: rgb(255, 255, 255);
+  z-index: 6;
+  /* transform: scale(1); */
+  border-radius: 25px; 
+  box-shadow: 0 0 20px var(--sword),
+  0 0 40px var(--sword), 
+  0 0 60px var(--sword), 
+  0 0 80px var(--sword), 
+  0 0 120px var(--sword),
+  0 0 220px var(--sword),
+  0 0 320px var(--sword);
+  transition: all 1s
+}
+
 .attack{
   display: flex;
-    animation: attack .7s infinite linear;
+    animation: attack  .7s infinite linear;
     box-shadow: 0 0 20px var(--sword),
     0 0 40px var(--sword), 
     0 0 60px var(--sword), 
@@ -104,21 +144,45 @@ body{
     0 0 120px var(--sword),
     0 0 220px var(--sword),
     0 0 320px var(--sword);
-  }
-
-@keyframes attack {
+}
+@keyframes stab {
   0%{
-
-    transform:rotateZ(0deg) scale(0);
+    transform: scale(1);
   }
-  33%{
-    transform: rotateZ(120deg) scale(1);
-  }
-  66%{
-    transform: rotateZ(240deg) scale(1);
+  50%{
+    transform:scale(1);
   }
   100%{
-    transform: rotateZ(360deg) scale(0);
+    transform: scale(1);
+  }
+}
+@keyframes attack {
+  0%{
+    transform:rotateZ(0deg) scale(1);
+  }
+  12.5%{
+    transform: rotateZ(45deg) scale(1.2);
+  }
+  25%{
+    transform: rotateZ(90deg) scale(1);
+  }
+  37.5%{
+    transform: rotateZ(135deg) scale(1.2);
+  }
+  50%{
+    transform: rotateZ(180deg) scale(1);
+  }
+  62.5%{
+    transform: rotateZ(225deg) scale(1.2);
+  }
+  75%{
+    transform: rotateZ(270deg) scale(1);
+  }
+  87.5%{
+    transform: rotateZ(315deg) scale(1.2);
+  }
+  100%{
+    transform: rotateZ(360deg) scale(1);
   }
 }
 
@@ -129,6 +193,76 @@ body{
   }
   100%{
     transform: scale(1) translate(-35%,-35%);
-    /* transform: translate(-25%,-25%);
-  } */
+  }
+}
+.nums{
+  position:absolute;
+}
+
+.ball {
+  transform:
+  rotateX(42deg)
+  rotateY(33deg);
+  /* rotateZ(-40deg); */
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  position: relative;
+  animation: float 3.5s ease-in-out infinite, drop .5s;
+  background: radial-gradient(
+    circle at 75% 30%,
+    white 5px,
+    aqua 8%,
+    darkblue 60%,
+    aqua 100%
+  );
+  box-shadow: inset 0 0 8px #fff, inset 3px 0 15px #eaf5fc,
+    inset 20px 0px 20px #c2d8fe, inset -8px -22px 35px #fde9ea,
+    inset 0 15px 20px #fde9ea, 0 0 25px #fff;
+}
+
+@keyframes drop {
+  0%{
+    transform: translate(-150%,-150%) rotateX(42deg)
+    rotateY(33deg);
+  }
+  100%{
+    transform: translate(0%,0%) rotateX(42deg)
+    rotateY(33deg);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0%,0%) rotateX(42deg)
+    rotateY(33deg);
+  }
+  50% {
+    transform: translate(-40%,-40%) rotateX(42deg)
+    rotateY(33deg);
+  }
+  100% {
+    transform: translate(0%,0%) rotateX(42deg)
+    rotateY(33deg);
+  }
+}
+
+.shrink {
+  animation: shrink 1s;
+  transform: translate(0%,0%) rotateX(42deg)
+  rotateY(33deg) scale(0);
+}
+@keyframes shrink{
+  0%{
+    transform: translate(0%,0%) rotateX(42deg)
+    rotateY(33deg) scale(1);
+  }
+  50%{
+    transform: translate(0%,0%) rotateX(42deg)
+    rotateY(33deg) scale(1.2);
+  }
+  100%{
+    transform: translate(0%,0%) rotateX(42deg)
+    rotateY(33deg) scale(0);
+  }
 }
