@@ -45,7 +45,7 @@ body{
   border-radius: 10px;
   color: white;
   font-size: 30px;
-  border: 1px solid rgb(128, 128, 128, .6);
+  border: 5px solid rgba(255, 255, 255);
   background-image: linear-gradient(
     to bottom right,
     #51beed,
@@ -82,6 +82,7 @@ body{
   z-index: 5;
   font-size: 25px;
   background-color: purple;
+  border: 5px solid white;
   box-shadow: 1px 1px 0px var(--charShadow),
   2px 2px 0px var(--charShadow),
   3px 3px 0px var(--charShadow),
