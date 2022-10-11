@@ -27,8 +27,8 @@ document.addEventListener("keydown", (event) => {
 function trashTalk() {
   let trashTalk = document.createElement("div")
   trashTalk.classList.add("trashTalk")
-  trashTalk.style.width = 50 + "vh";
-  trashTalk.style.height = 10 + "vh";
+  trashTalk.style.width = 35 + "vh";
+  trashTalk.style.height = 20 + "vh";
   trashTalk.style.position = "absolute";
   trashTalk.style.border = "1px solid white";
   trashTalk.style.left = 0;
@@ -40,6 +40,7 @@ function trashTalk() {
   trashTalk.style.color = "white";
   trashTalk.style.fontSize = 25 + "px";
   trashTalk.style.borderRadius = 10 + "px";
+  trashTalk.style.textAlign = "center";
   gameScreen.appendChild(trashTalk)
 }
 trashTalk()
@@ -53,8 +54,8 @@ setTrash()
 function scoreBoard() {
   let scoreBoard = document.createElement("div")
   scoreBoard.classList.add("scoreBoard")
-  scoreBoard.style.width = 20 + "vh";
-  scoreBoard.style.height = 10 + "vh";
+  scoreBoard.style.width = 35 + "vh";
+  scoreBoard.style.height = 20 + "vh";
   scoreBoard.style.position = "absolute";
   scoreBoard.style.border = "1px solid white";
   scoreBoard.style.right = 0;
@@ -81,8 +82,8 @@ function createMap() {
   let map = document.createElement("div");
   map.classList.add("mapContainer");
   map.style.display = "grid";
-  map.style.height = "95vh";
-  map.style.width = "95vh";
+  map.style.height = "90vh";
+  map.style.width = "90vh";
   // map.style.transform = "rotateZ(45deg)";
   gameScreen.append(map);
 
@@ -109,7 +110,6 @@ function createPlayer(start) {
   player.style.height = 5 + "vh";
   player.style.width = 5 + "vh";
   player.style.position = "absolute";
-  player.style.background = "red";
   player.style.left = start.getBoundingClientRect().left;
   player.style.top = start.getBoundingClientRect().top;
   player.innerText = start.innerText;

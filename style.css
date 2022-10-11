@@ -4,6 +4,7 @@
 
 :root {
   --shadow: rgb(147, 237, 255);
+  --charShadow:  rgb(0, 0, 0);
   --surface: #888888;
   --sword: rgb(255, 157, 157);
 }
@@ -80,20 +81,21 @@ body{
   border-radius: 8px;
   z-index: 5;
   font-size: 25px;
-  box-shadow: 1px 1px 0px var(--shadow),
-  2px 2px 0px var(--shadow),
-  3px 3px 0px var(--shadow),
-  4px 4px 0px var(--shadow),
-  5px 5px 0px var(--shadow),
-  6px 6px 0px var(--shadow),
-  7px 7px 0px var(--shadow),
-  8px 8px 0px var(--shadow),
-  9px 9px 0px var(--shadow),
-  10px 10px 0px var(--shadow),
-  11px 11px 0px var(--shadow),
-  12px 12px 0px var(--shadow),
-  13px 13px 0px var(--shadow),
-  14px 14px 0px var(--shadow);
+  background-color: purple;
+  box-shadow: 1px 1px 0px var(--charShadow),
+  2px 2px 0px var(--charShadow),
+  3px 3px 0px var(--charShadow),
+  4px 4px 0px var(--charShadow),
+  5px 5px 0px var(--charShadow),
+  6px 6px 0px var(--charShadow),
+  7px 7px 0px var(--charShadow),
+  8px 8px 0px var(--charShadow),
+  9px 9px 0px var(--charShadow),
+  10px 10px 0px var(--charShadow),
+  11px 11px 0px var(--charShadow),
+  12px 12px 0px var(--charShadow),
+  13px 13px 0px var(--charShadow),
+  14px 14px 0px var(--charShadow);
   animation: appear .5s;
 }
 
@@ -263,4 +265,58 @@ body{
     transform: translate(0%,0%) rotateX(42deg)
     rotateY(33deg) scale(0);
   }
+}
+
+.controls{
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  width: 35vh;
+  justify-content: center;
+  align-items: start;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 25px;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  gap: 0;
+  text-align: start;
+}
+p{
+  margin: 0;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+span{
+  display: inline-block;
+  
+}
+.flipH {
+  transform: scale(-1, 1);
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+
+.pointSystem{
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  width: 35vh;
+  justify-content: center;
+  align-items: end;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 25px;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  gap: 0;
+  text-align: start;
+
 }
