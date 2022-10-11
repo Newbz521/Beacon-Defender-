@@ -23,6 +23,32 @@ document.addEventListener("keydown", (event) => {
     attack();
   }
 });
+
+function scoreBoard() {
+  let scoreBoard = document.createElement("div")
+  scoreBoard.classList.add("scoreBoard")
+  scoreBoard.style.width = 20 + "vh";
+  scoreBoard.style.height = 20 + "vh";
+  scoreBoard.style.position = "absolute";
+  scoreBoard.style.border = "1px solid white";
+  scoreBoard.style.right = 0;
+  scoreBoard.style.top = 0;
+  scoreBoard.style.margin = 25 + "px";
+  scoreBoard.style.display = "flex";
+  scoreBoard.style.justifyContent = "center";
+  scoreBoard.style.alignItems = "center";
+  scoreBoard.style.color = "white";
+  scoreBoard.style.fontSize = 50 + "px";
+  scoreBoard.style.borderRadius = 10 + "px";
+  gameScreen.appendChild(scoreBoard)
+}
+scoreBoard()
+let currentScore = 0;
+function setScore() {
+  let scoreBoard = document.querySelector(".scoreBoard")
+  scoreBoard.innerText = currentScore;
+}
+setScore()
 function createMap() {
   let map = document.createElement("div");
   map.classList.add("mapContainer");
@@ -173,7 +199,20 @@ function attack() {
       }
     }
   }
-  console.log(`${removed.length} bombs removed!` ) 
+  if (removed.length == 2) {
+    // console.log("1POINT!!")
+    currentScore += 1
+    setScore()
+  } else if (removed.length == 3) {
+    console.log("THREE BUBBLE COMBO +3POINTS!")
+    currentScore += 5
+    setScore
+  } else if (removed.length > 3) {
+    currentScore += 100
+    console.log("BIG COMBO! + 5 points")
+    setScore
+  }
+
 }
 
 function createBomb() {

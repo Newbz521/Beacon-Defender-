@@ -22,11 +22,9 @@ body{
   position: absolute;
   justify-content: center;
   align-items: center;
-  background-color: purple;
+  background-color: rgb(87, 2, 87);
   font-family: 'Silkscreen', cursive;
   overflow: hidden;
-
-  /* border: 1px solid blue; */
 }
 .mapContainer{
   grid-template-columns: repeat(6, 1fr);
