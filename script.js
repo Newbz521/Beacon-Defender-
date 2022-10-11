@@ -77,18 +77,22 @@ function moveLeft() {
   let currentPosition = document.querySelector("#player");
   let platforms = document.querySelectorAll(".platform");
   for (let i = 0; i < platforms.length; i++) {
-    if (platforms[i] === currentPosition.parentElement && i > 0) {
+    if (platforms[i] === currentPosition.parentElement && (i % 6 !== 0)) {
       platforms[i].removeChild(currentPosition);
       createPlayer(platforms[i - 1]);
+      // platforms[i-1].appendChild(platforms[i].childNodes[1])
+
     }
   }
 }
+
+let noRights = [];
 
 function moveRight() {
   let platforms = document.querySelectorAll(".platform");
   let currentPosition = document.querySelector("#player");
   for (let i = 0; i < platforms.length; i++) {
-    if (platforms[i] === currentPosition.parentElement && (i < platforms.length - 1)) {
+    if (platforms[i] === currentPosition.parentElement && (i < platforms.length - 1) && (i !== 5)  && (i !== 11)  && (i !== 17)  && (i !== 23)  && (i !== 29)  && (i !== 35)) {
       platforms[i].removeChild(currentPosition);
       createPlayer(platforms[i + 1]);
     }
@@ -99,7 +103,7 @@ function moveUp() {
   let platforms = document.querySelectorAll(".platform");
   let currentPosition = document.querySelector("#player");
   for (let i = 0; i < platforms.length; i++) {
-    if (platforms[i] === currentPosition.parentElement && (i > 6)) {
+    if (platforms[i] === currentPosition.parentElement && (i >= 6)) {
       platforms[i].removeChild(currentPosition);
       createPlayer(platforms[i - 6]);
     }
